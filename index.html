@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        body{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: red;
+            transition: all 1.5s;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 10px;
+        }
+        h1{
+            font-size: 50px;
+            text-decoration: underline blue wavy 5px;
+        }
+        h2{
+            font-size: 30px;
+            padding: 20px;
+            border:10px solid black;
+        }
+        #color{
+            text-decoration: underline rgb(54, 10, 216) dashed;
+        }
+        
+        #change {background-image: linear-gradient(to right, #1D2B64 0%, #F8CDDA  51%, #1D2B64  100%)}
+        #change {
+            margin: 20px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+            cursor:pointer;
+          }
+
+          #change:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+         
+    </style>
+  </head>
+
+  <body>
+      <div class="container">
+          <h1>color flipper</h1>
+          <div id="box">
+            <h2>background color : <span id="color">#f1f5f8</span></h2>
+            <button class="btn btn-hero" id="change">click me</button>
+          </div>
+      </div>
+    <script>
+            const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+const btn = document.getElementById("change");
+const color = document.getElementById("color");
+
+btn.addEventListener("click", function () {
+  let hexColor = "#";
+  for (let i = 0; i < 6; i++) {
+    hexColor += hex[getRandomNumber()];
+  }
+
+  color.textContent = hexColor;
+  document.body.style.backgroundColor = hexColor;
+});
+
+function getRandomNumber() {
+  return Math.floor(Math.random() * hex.length);
+}
+    </script>
+  </body>
+</html>
